@@ -1,10 +1,18 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginPage from "./pages/login/LoginPage";
+import AdminRegistration from "./pages/admin-registration/AdminRegistration";
 
 const App = () => {
   return (
     <div>
-      <Button>Submit</Button>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<AdminRegistration />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
