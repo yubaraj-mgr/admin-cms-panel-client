@@ -24,7 +24,7 @@ const EmailVerification = () => {
       email: queryParams.get("e"),
     };
     // call axios to call the server
-    // If e function, immediately calling fucniton
+    // If e function, immediately calling fucniton, we are using ife functon here so that we can use async await because useEffect cannot do async
     (async () => {
       const result = await emailVerifyAdminUser(obj);
       setResponse(result);

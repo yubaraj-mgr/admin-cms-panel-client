@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { CustomInputField } from "../../components/customInputField/CustomInputField";
 import { Footer } from "../../components/footer/Footer";
 import { Header } from "../../components/header/Header";
@@ -13,9 +13,13 @@ const LoginPage = () => {
   const [form, setForm] = useState({});
 
   const { user } = useSelector((state) => state.admin);
+  const location = useLocation();
+  const origin =
+    (location.state && location.state.from && location.state.from.pathname) ||
+    "/dashboard";
 
   useEffect(() => {
-    user?._id && navigate("/dashboard");
+    user?._id && navigate(origin);
   }, [user, navigate]);
 
   const handleOnChange = (e) => {
